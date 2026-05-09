@@ -14,3 +14,19 @@ The proposed pipeline integrates deep learning and radiomics to provide accurate
 5. Model evaluation
 
 ![Pipeline overview](images/pipeline.png)
+
+
+## Dataset
+- **UCSF-PDGM Dataset**  
+  Publicly available dataset for glioma grading
+  👉 https://www.cancerimagingarchive.net/collection/ucsf-pdgm/
+
+
+
+## Radiomic Features
+Radiomic features are extracted following standardized definitions and include:
+- First-order statistics
+- Texture features (GLCM, GLRLM, GLSZM)
+- Shape and morphological descriptors
+
+## Model
