@@ -30,3 +30,9 @@ Radiomic features are extracted following standardized definitions and include:
 - Shape and morphological descriptors
 
 ## Model
+The classification framework employs:
+
+- Convolutional layers to extract hierarchical and local patterns from the input feature matrix
+-  Residual connections to improve gradient flow and ensure stable training
+-  Adaptive pooling and fully connected layers to transform learned representations into a compact embedding
+-  MLP-based classifier for final binary prediction of glioma IDH status
