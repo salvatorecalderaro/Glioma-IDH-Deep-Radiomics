@@ -80,7 +80,7 @@ python run_pipeline.py \
 - `--verbose`: Print the commands before running them (default: False).
 
 
-#### Model Training and Evaluation on UCSF-PDGM Dataset
+### Model Training and Evaluation on UCSF-PDGM Dataset
 ```bash
 python cnn.py
 ```
