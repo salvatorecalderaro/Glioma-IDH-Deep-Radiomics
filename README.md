@@ -79,6 +79,14 @@ python run_pipeline.py \
 - `--device`: Index of the CUDA device to use (default: 0).
 - `--verbose`: Print the commands before running them (default: False).
 
+
+#### Model Training and Evaluation on UCSF-PDGM Dataset
+```bash
+python cnn.py
+```
+Note: The model is trained  and tested using the UCSF-PDGM radiomic features extracted and stored in /data/UCSF_features.csv.
+
+
 ## Contact 
 For questions, feedback, or collaboration opportunities, please contact:
 📧 salvatore.calderaro01@unipa.it
