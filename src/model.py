@@ -88,38 +88,30 @@ def train_model(device, model, trainloader, epochs=20, lr=1e-3):
 
             total_loss += loss.item()
 
-        #print(f"Epoch {epoch+1}/{epochs} - Loss: {total_loss/len(trainloader):.4f}")
+        print(f"Epoch {epoch+1}/{epochs} - Loss: {total_loss/len(trainloader):.4f}")
     path = "../models/cnn.pth"
     torch.save(model.state_dict(), path)
     return model
 
 
-# =========================
-# PREDICT FUNCTION
-# =========================
 def predict(device, model, testloader):
-
     model.to(device)
     model.eval()
-
     all_preds = []
     all_labels = []
     all_proba = []
-
     with torch.no_grad():
         for xb, yb in testloader:
             xb = xb.to(device)
-
-            proba = torch.sigmoid(model(xb))
-            preds = (proba > 0.5).float()
-
+            logits = model(xb)
+            proba = torch.sigmoid(logits).squeeze(1)
+            preds = (proba > 0.5).long()
             all_preds.append(preds.cpu())
-            all_labels.append(yb)
+            all_labels.append(yb.cpu())
             all_proba.append(proba.cpu())
 
-    all_preds = torch.cat(all_preds).numpy().flatten()
-    all_labels = torch.cat(all_labels).numpy().flatten()
-    all_proba = torch.cat(all_proba).numpy().flatten()
-
-    return all_preds, all_labels, all_proba
+    all_preds = torch.cat(all_preds).numpy()
+    all_labels = torch.cat(all_labels).numpy()
+    all_proba = torch.cat(all_proba).numpy()
+    return all_labels, all_preds, all_proba
 
